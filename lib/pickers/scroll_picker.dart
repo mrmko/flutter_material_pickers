@@ -54,8 +54,7 @@ class _ScrollPickerState extends State<ScrollPicker> {
   Widget build(BuildContext context) {
     final ThemeData themeData = Theme.of(context);
     TextStyle defaultStyle = themeData.textTheme.bodyText2;
-    TextStyle selectedStyle =
-        themeData.textTheme.headline5.copyWith(color: themeData.accentColor);
+    TextStyle selectedStyle = themeData.textTheme.headline5.copyWith(color: themeData.accentColor);
 
     return LayoutBuilder(
       builder: (BuildContext context, BoxConstraints constraints) {
@@ -66,16 +65,14 @@ class _ScrollPickerState extends State<ScrollPicker> {
             GestureDetector(
               onTapUp: _itemTapped,
               child: ListWheelScrollView.useDelegate(
-                childDelegate: ListWheelChildBuilderDelegate(
-                    builder: (BuildContext context, int index) {
+                childDelegate: ListWheelChildBuilderDelegate(builder: (BuildContext context, int index) {
                   if (index < 0 || index > widget.items.length - 1) {
                     return null;
                   }
 
                   var value = widget.items[index];
 
-                  final TextStyle itemStyle =
-                      (value == selectedValue) ? selectedStyle : defaultStyle;
+                  final TextStyle itemStyle = (value == selectedValue) ? selectedStyle : defaultStyle;
 
                   return Center(
                     child: Text(value, style: itemStyle),
@@ -87,15 +84,13 @@ class _ScrollPickerState extends State<ScrollPicker> {
                 physics: FixedExtentScrollPhysics(),
               ),
             ),
-            Center(child: Divider()),
             Center(
               child: Container(
                 height: itemHeight,
                 decoration: BoxDecoration(
                   border: Border(
                     top: BorderSide(color: themeData.accentColor, width: 1.0),
-                    bottom:
-                        BorderSide(color: themeData.accentColor, width: 1.0),
+                    bottom: BorderSide(color: themeData.accentColor, width: 1.0),
                   ),
                 ),
               ),
@@ -113,8 +108,7 @@ class _ScrollPickerState extends State<ScrollPicker> {
     double newPosition = scrollController.offset + changeBy;
 
     // animate to and center on the selected item
-    scrollController.animateTo(newPosition,
-        duration: Duration(milliseconds: 500), curve: Curves.easeInOut);
+    scrollController.animateTo(newPosition, duration: Duration(milliseconds: 500), curve: Curves.easeInOut);
   }
 
   void _onSelectedItemChanged(int index) {
